@@ -39,10 +39,25 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authenticate.apps.AuthenticateConfig',
     'rest_framework',
+    'trainstatus',
+
 ]
 
 
 AUTH_USER_MODEL = 'authenticate.User'
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
